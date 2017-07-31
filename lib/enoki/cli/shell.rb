@@ -1,16 +1,12 @@
 module Enoki
   class CLI < Thor
     no_commands do
-      def puts_error(message)
-        puts_colored_message(message, Thor::Shell::Color::RED)
+      def say_error(message)
+        say(message, :red)
       end
-      
-      def puts_warning(message)
-        puts_colored_message(message, Thor::Shell::Color::YELLOW)
-      end
-      
-      def puts_colored_message(message, color)
-        puts Thor::Shell::Color.new.set_color(message, color)
+
+      def say_warning(message)
+        say(message, :yellow)
       end
     end
   end
