@@ -20,12 +20,7 @@ module Enoki
       project_root_dir = ask("Your project root directory?", default: default_project_root_dir, path: true)
       project_file_path = ask("Your project file path?", default: default_project_file_path, path: true)
 
-      config = {
-          template_dir: template_dir,
-          project_root_dir: project_root_dir,
-          project_file_path: project_file_path,
-      }
-      template('templates/.enoki.yml.tt', settings_file, config)
+      template("templates/.enoki.yml.tt", settings_file, context: binding)
     end
   end
 end
