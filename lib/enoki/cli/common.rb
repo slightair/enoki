@@ -1,4 +1,5 @@
 require 'yaml'
+require 'xcodeproj'
 
 module Enoki
   class CLI < Thor
@@ -37,6 +38,10 @@ module Enoki
 
       def templates
         Dir.glob(File.join(template_dir, "*/")).map { |f| File.basename(f) }
+      end
+
+      def project
+        @project ||= Xcodeproj::Project.open(project_file_path)
       end
     end
   end
