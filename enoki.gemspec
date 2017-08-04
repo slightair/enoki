@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email = ["arksutite@gmail.com"]
 
   spec.summary = %q{Code generator for Xcode project.}
-  spec.description = %q{Code generator for Xcode project.}
+  spec.description = %q{Code generator for Xcode project. You can manage multiple user-defined file template set in your project.}
   spec.homepage = "https://github.com/slightair/enoki"
   spec.license = "MIT"
 
