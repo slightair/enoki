@@ -23,7 +23,7 @@ module Enoki
       end
 
       file_list.each do |path|
-        resolved_path = Pathname.new(path.to_path.gsub(NAME_PLACEHOLDER, name.capitalize).chomp(EXT_TEMPLATE))
+        resolved_path = Pathname.new(path.to_path.gsub(NAME_PLACEHOLDER, name).chomp(EXT_TEMPLATE))
         source_path = path.expand_path(selected_template_root).to_path
         dest_path = resolved_path.expand_path(project_root).to_path
 

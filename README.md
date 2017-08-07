@@ -53,9 +53,9 @@ Then added 2 files to your Xcode project and setup project groups that correspon
 
 ### File name rule
 
-If you use `__name__` in file or directory name of template, replace to capitalized name argument in your command.
+If you use `__name__` in file or directory name of template, replace to name argument in your command.
 
-For example, generate `Modules/Hello/HelloViewController.swift` from template file `Modules/__name__/__name__ViewController.swift.tt` if your command is `generate TEMPLATE_SET hello`.
+For example, generate `Modules/Hello/HelloViewController.swift` from template file `Modules/__name__/__name__ViewController.swift.tt` if your command is `generate TEMPLATE_SET Hello`.
 
 ### Template file rule
 
@@ -74,7 +74,7 @@ class <%= name %>ViewController: UIViewController {
 }
 ```
 
-and run generate command with name `hello`, then you got following result.
+and run generate command with name `Hello`, then you got following result.
 
 ```swift
 import UIKit
