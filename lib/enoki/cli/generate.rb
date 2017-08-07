@@ -9,6 +9,7 @@ module Enoki
     include Thor::Actions
 
     desc "generate TEMPLATE FUNCTION_NAME", "generate code files from template"
+    method_option :target, aliases: "-t", desc: "Add files to specified target"
     def generate(template_name, name)
       unless templates.include? template_name
         say_error "Template not found"
@@ -27,7 +28,7 @@ module Enoki
         dest_path = resolved_path.expand_path(project_root).to_path
 
         template(source_path, dest_path, context: context_for_template(name))
-        add_file_reference(resolved_path)
+        add_file_reference(resolved_path, options[:target])
       end
 
       project.save
@@ -38,7 +39,7 @@ module Enoki
         binding
       end
 
-      def add_file_reference(path)
+      def add_file_reference(path, target_name)
         path_list = path.to_path.split(File::SEPARATOR)
         group = project.root_object.main_group
 
@@ -52,7 +53,7 @@ module Enoki
         file_ref = group.files.find { |f| f.path == file } || group.new_reference(file)
 
         if SOURCE_CODE_EXT_LIST.include?(path.extname)
-          target = project.targets.first
+          target = project.targets.find { |t| t.name == target_name } || project.targets.first
           if target
             target.source_build_phase.add_file_reference(file_ref, true)
           end
